@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://14ox4bdr1qtr"]
+[gd_scene load_steps=4 format=3 uid="uid://14ox4bdr1qtr"]
+
+[ext_resource type="Script" uid="uid://dxshblayy3es5" path="res://scenes/UI/ui_Sript.gd" id="1_suays"]
+[ext_resource type="Texture2D" uid="uid://dbrcrh3n717ua" path="res://assets/UI/MenuMask_PlaceHolder.jpg" id="2_yb1mt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_suays"]
+font_size = 64
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -7,3 +13,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_suays")
+
+[node name="Main_Menu_Buttons" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -68.0
+offset_right = 35.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play_Button" type="Button" parent="Main_Menu_Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Play
+"
+
+[node name="Options_Button" type="Button" parent="Main_Menu_Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Options"
+
+[node name="Exit_Button" type="Button" parent="Main_Menu_Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.22200002
+anchor_right = 0.499
+anchor_bottom = 0.22200002
+offset_left = -20.098022
+offset_top = -43.856018
+offset_right = 20.901978
+offset_bottom = -20.856018
+grow_horizontal = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_suays")
+
+[node name="Mask" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 145.0
+offset_right = 344.0
+offset_bottom = 428.0
+texture = ExtResource("2_yb1mt")
+expand_mode = 1
+
+[node name="Options_Menu_Buttons" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return_Button" type="Button" parent="Options_Menu_Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Return"
+
+[connection signal="pressed" from="Main_Menu_Buttons/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Main_Menu_Buttons/Exit_Button" to="." method="exit_Button_On_Pressed"]
+[connection signal="pressed" from="Options_Menu_Buttons/Return_Button" to="." method="_on_return_button_pressed"]

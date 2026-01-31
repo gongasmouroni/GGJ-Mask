@@ -12,6 +12,6 @@ func _ready() -> void:
 
 
 
-func _on_interacted(body: Variant) -> void:
+func _on_interacted(_body: Variant) -> void:
 	hasBeenPicked.emit()
 	queue_free()

@@ -5,13 +5,14 @@ extends StaticBody3D
 
 @export var isApplied = false
 
-@export var staticWall = true
+@export var staticWall = false
 
 func _ready() -> void:
 	self.visible = !isApplied
+	cpu_particles_3d.emitting = !staticWall
 
 func on_player_equip_mask(mask: int) -> void:
-	if(mask == 0):	
+	if(mask == 0 && !staticWall):	
 		self.visible = isApplied
 		collision_shape_3d.disabled = !isApplied
 		cpu_particles_3d.emitting = !isApplied

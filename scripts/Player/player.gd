@@ -14,7 +14,7 @@ extends CharacterBody3D
 
 var equipedMask : int = 0
 var isMaskedEquiped : bool = false
-var unlockedMasks : int = 2
+var unlockedMasks : int = 1
 signal maskChanged(mask:int)
 signal equipMask(mask:int)
 
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and unlockedMasks > 1:
 		velocity.y = JUMP_VELOCITY
 		
 	if Input.is_action_pressed("sprint"):

@@ -7,6 +7,8 @@
 size = Vector3(2, 5.6, 0.2)
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_ftuji")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

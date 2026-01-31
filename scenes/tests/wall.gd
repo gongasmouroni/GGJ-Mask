@@ -7,10 +7,9 @@ var isApplied = false
 
 @export var staticWall = true
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if !staticWall:
-		if Input.is_action_just_pressed("apply_mask"):
-			self.visible = isApplied
-			collision_shape_3d.disabled = !isApplied
-			cpu_particles_3d.emitting = !isApplied
-			isApplied = !isApplied
+func _on_player_equip_mask(mask: int) -> void:
+	if(mask == 0):	
+		self.visible = isApplied
+		collision_shape_3d.disabled = !isApplied
+		cpu_particles_3d.emitting = !isApplied
+		isApplied = !isApplied

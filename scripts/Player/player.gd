@@ -6,8 +6,17 @@ extends CharacterBody3D
 @export var lookSpeed = 0.002
 @export var sprintMult = 1.75
 
+@onready var mask_coldown: Timer = $MaskColdown
+
+
 #Other nodes that matter
 @onready var head: Node3D = $Head
+
+var equipedMask : int = 0
+var isMaskedEquiped : bool = false
+var unlockedMasks : int = 2
+signal maskChanged(mask:int)
+signal equipMask(mask:int)
 
 #Variables
 var look_rotation : Vector2
@@ -21,6 +30,21 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_look(event.relative)
+	if Input.is_action_just_pressed("change_forward") && mask_coldown.is_stopped() && !isMaskedEquiped:
+		equipedMask = (equipedMask + 1) % unlockedMasks
+		maskChanged.emit(equipedMask)
+		mask_coldown.start()
+	if Input.is_action_just_pressed("change_backward") && mask_coldown.is_stopped() && !isMaskedEquiped:
+		equipedMask = equipedMask - 1
+		if equipedMask < 0:
+			equipedMask = unlockedMasks - 1
+		maskChanged.emit(equipedMask)
+		mask_coldown.start()
+	if Input.is_action_just_pressed("apply_mask")  && mask_coldown.is_stopped():
+		isMaskedEquiped = !isMaskedEquiped
+		equipMask.emit(equipedMask)
+		mask_coldown.start()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

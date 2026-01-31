@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cauew2lm80qdk" path="res://assets/Temp/City/Large Building-ppwtREejXg.glb" id="5_lust7"]
 [ext_resource type="PackedScene" uid="uid://cfxe4vc6u3ke1" path="res://assets/Temp/City/Skyscraper.glb" id="7_8x5y1"]
 [ext_resource type="PackedScene" uid="uid://djt8uw3cn8skh" path="res://scenes/UI/Glitch_Effect.tscn" id="8_mpiwn"]
+[ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="8_mpiwn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ol1t5"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,6 +30,20 @@ fog_density = 1.0
 fog_depth_curve = 0.45062527
 fog_depth_end = 1000.0
 volumetric_fog_detail_spread = 4.438277
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpiwn"]
+render_priority = 0
+shader = ExtResource("8_mpiwn")
+shader_parameter/brightness = 0.8
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.2
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_intensity = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_8x5y1"]
+material = SubResource("ShaderMaterial_mpiwn")
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="Node3D" type="Node3D"]
 
@@ -75,3 +90,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 51.3, 0, -9.400001)
 
 [node name="GlitchEffect" parent="." instance=ExtResource("8_mpiwn")]
 visible = false
+
+[node name="Consistency" type="MeshInstance3D" parent="."]
+extra_cull_margin = 10000.0
+mesh = SubResource("QuadMesh_8x5y1")

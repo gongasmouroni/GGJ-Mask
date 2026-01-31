@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpuninrommo1k"]
+[gd_scene load_steps=19 format=3 uid="uid://bmycg3mvu41bn"]
 
-[ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
+[ext_resource type="Script" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
 [ext_resource type="Texture2D" uid="uid://cj0ho0ovs1i32" path="res://assets/SkyBox/sky_26_2k.png" id="1_kcal8"]
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
-[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="Texture2D" uid="uid://cr6igh1d5owsv" path="res://assets/Masks/Mask-1-alone.png" id="8_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
+[ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ddsy1"]
 panorama = ExtResource("1_kcal8")
@@ -36,6 +37,20 @@ filter_baking_aabb = AABB(-125, 0, -115, 250, 2, 225)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddsy1"]
 albedo_color = Color(0, 0.65882355, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpiwn"]
+render_priority = 0
+shader = ExtResource("11_w34hh")
+shader_parameter/brightness = 0.8
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.2
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_intensity = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_cldoq"]
+material = SubResource("ShaderMaterial_mpiwn")
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
@@ -107,6 +122,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -36.600002)
 [node name="PickableMask" parent="." instance=ExtResource("7_meyl1")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 50.100002, 1.2, -53.7)
 texture = ExtResource("8_gwfe6")
+
+[node name="Consistency" type="MeshInstance3D" parent="."]
+extra_cull_margin = 10000.0
+mesh = SubResource("QuadMesh_cldoq")
 
 [connection signal="equipMask" from="Player" to="NavigationRegion3D/HiddenWalls" method="_on_player_equip_mask"]
 [connection signal="hasBeenPicked" from="PickableMask" to="Player" method="_on_pickable_mask_has_been_picked"]

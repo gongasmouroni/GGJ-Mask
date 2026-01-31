@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6ffw53yiyvdp"]
+[gd_scene load_steps=10 format=3 uid="uid://cpuninrommo1k"]
 
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
 [ext_resource type="Texture2D" uid="uid://cj0ho0ovs1i32" path="res://assets/SkyBox/sky_26_2k.png" id="1_kcal8"]
-[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/Player.tscn" id="2_kcal8"]
+[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ddsy1"]

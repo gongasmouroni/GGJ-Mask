@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfynbf8lc8g5u"]
+[gd_scene load_steps=12 format=3 uid="uid://bfynbf8lc8g5u"]
 
 [ext_resource type="PackedScene" uid="uid://cujvihv0p37e4" path="res://assets/Temp/City/Large Building-1bt4yYKmuK.glb" id="1_dfpd7"]
-[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/Player.tscn" id="1_ol1t5"]
+[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="1_ol1t5"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="3_dfpd7"]
 [ext_resource type="PackedScene" uid="uid://bbm0kmtdiuluj" path="res://assets/Temp/City/Large Building-3IhrYZp6tP.glb" id="3_xfsbo"]
 [ext_resource type="PackedScene" uid="uid://cup2jyg3dqlw3" path="res://assets/Temp/City/Large Building-JgGLJH2iXj.glb" id="4_a3dwm"]
 [ext_resource type="PackedScene" uid="uid://cauew2lm80qdk" path="res://assets/Temp/City/Large Building-ppwtREejXg.glb" id="5_lust7"]
 [ext_resource type="PackedScene" uid="uid://cfxe4vc6u3ke1" path="res://assets/Temp/City/Skyscraper.glb" id="7_8x5y1"]
+[ext_resource type="PackedScene" uid="uid://djt8uw3cn8skh" path="res://scenes/UI/Glitch_Effect.tscn" id="8_mpiwn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ol1t5"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,7 +36,7 @@ volumetric_fog_detail_spread = 4.438277
 environment = SubResource("Environment_dfpd7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8137975, 0.577909, 0.061275095, -0.5065154, 0.6536411, 0.56231254, 0.2849138, -0.48864526, 0.82465124, 0, 0, 0)
+transform = Transform3D(0.8137975, 0.57790923, 0.06127496, -0.5065154, 0.6536411, 0.5623126, 0.2849138, -0.48864526, 0.8246514, 0, 0, 0)
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -71,3 +72,6 @@ staticWall = false
 
 [node name="Skyscraper" parent="." instance=ExtResource("7_8x5y1")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 51.3, 0, -9.400001)
+
+[node name="GlitchEffect" parent="." instance=ExtResource("8_mpiwn")]
+visible = false

@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8ijapl4fq23s"]
+[gd_scene load_steps=12 format=3 uid="uid://b8ijapl4fq23s"]
 
+[ext_resource type="Shader" uid="uid://bbwyytyxvinsn" path="res://scenes/UI/GUI.gdshader" id="1_c20p6"]
 [ext_resource type="Script" uid="uid://cevc05dna1kh7" path="res://scenes/UI/gui.gd" id="1_nq88q"]
 [ext_resource type="Texture2D" uid="uid://bqaqowhghu5cg" path="res://assets/Masks/Red_Carnival_Mask_PNG_Clip_Art_Image.png" id="1_tvu7q"]
+[ext_resource type="PackedScene" uid="uid://djt8uw3cn8skh" path="res://scenes/UI/Glitch_Effect.tscn" id="4_6vqsa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vqsa"]
+shader = ExtResource("1_c20p6")
+shader_parameter/speed = 1.0
+shader_parameter/intensity = 0.2
 
 [sub_resource type="Animation" id="Animation_nq88q"]
 length = 0.001
@@ -16,6 +23,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.2617994]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_tvu7q"]
@@ -34,13 +53,37 @@ tracks/0/keys = {
 "values": [0.2617994, -0.7853982, -0.7853982, 0.2617994]
 }
 
+[sub_resource type="Animation" id="Animation_6vqsa"]
+resource_name = "Wall_mask_Equip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.60933006, 0.6093301, 0.60933006, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nq88q"]
 _data = {
 &"RESET": SubResource("Animation_nq88q"),
+&"Wall_mask_Equip": SubResource("Animation_6vqsa"),
 &"change_mask": SubResource("Animation_tvu7q")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c20p6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ynti"]
+shader = ExtResource("1_c20p6")
+shader_parameter/speed = 29.99999932944
+shader_parameter/intensity = 0.6499999854712
+
 [node name="Gui" type="Control"]
+material = SubResource("ShaderMaterial_6vqsa")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +93,15 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_nq88q")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nq88q")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_c20p6")
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -60,16 +111,14 @@ anchor_bottom = 1.0
 offset_left = -801.36865
 offset_top = -398.95416
 offset_right = -20.074707
-offset_bottom = 121.90857
+offset_bottom = 121.90869
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 0.2617994
 pivot_offset = Vector2(781.29395, 520.8627)
 texture = ExtResource("1_tvu7q")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nq88q")
-}
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="GlitchEffect" parent="." instance=ExtResource("4_6vqsa")]
+visible = false
+material = SubResource("ShaderMaterial_7ynti")
+layout_mode = 0

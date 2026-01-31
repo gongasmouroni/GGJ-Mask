@@ -3,6 +3,7 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var texture_rect: TextureRect = $TextureRect
+@onready var glitch_effect: Control = $GlitchEffect
 
 var paths = ["res://assets/Masks/Red_Carnival_Mask_PNG_Clip_Art_Image.png", "res://assets/Masks/oni.png", "res://assets/Masks/Mask-1.png"]
 var index = 0
@@ -25,6 +26,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if isApplied:
 			canvas_modulate.color = Color.WHITE
 		if !isApplied:
-			canvas_modulate.color = Color.AQUA 
+			animation_player.play("Wall_mask_Equip")
+		
+		glitch_effect.visible = !glitch_effect.visible	 
 		isApplied = !isApplied
 			

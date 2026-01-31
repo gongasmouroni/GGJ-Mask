@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://djt8uw3cn8skh"]
+
+[node name="GlitchEffect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+y_sort_enabled = true
+use_parent_material = true
+layout_mode = 0
+offset_left = -298.0
+offset_top = -113.0
+offset_right = 2126.0
+offset_bottom = 1223.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

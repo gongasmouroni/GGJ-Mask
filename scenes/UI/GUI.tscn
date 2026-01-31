@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8ijapl4fq23s"]
+[gd_scene load_steps=13 format=3 uid="uid://b8ijapl4fq23s"]
 
 [ext_resource type="Shader" uid="uid://bbwyytyxvinsn" path="res://scenes/UI/GUI.gdshader" id="1_c20p6"]
 [ext_resource type="Script" uid="uid://cevc05dna1kh7" path="res://scenes/UI/gui.gd" id="1_nq88q"]
@@ -68,8 +68,24 @@ tracks/0/keys = {
 "values": [0.2617994, -0.7853982, -0.7853982, 0.2617994]
 }
 
+[sub_resource type="Animation" id="Animation_q28fx"]
+resource_name = "Jump_mask_Equip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9922301, 0.43028337, 0.39095467, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nq88q"]
 _data = {
+&"Jump_mask_Equip": SubResource("Animation_q28fx"),
 &"RESET": SubResource("Animation_nq88q"),
 &"Wall_mask_Equip": SubResource("Animation_6vqsa"),
 &"change_mask": SubResource("Animation_tvu7q")

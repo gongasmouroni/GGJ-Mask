@@ -8,6 +8,9 @@ extends CharacterBody3D
 
 @onready var mask_coldown: Timer = $MaskColdown
 
+#Sound
+@onready var steps: AudioStreamPlayer = $steps
+@onready var bgmusic: AudioStreamPlayer = $bgmusic
 
 #Other nodes that matter
 @onready var head: Node3D = $Head
@@ -40,6 +43,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		maskChanged.emit(equipedMask)
 		mask_coldown.start()
 	if Input.is_action_just_pressed("apply_mask")  && mask_coldown.is_stopped():
+		if(isMaskedEquiped):
+			bgmusic.stream = load("res://assets/Sound/Musics/Mask 1.mp3")
+			bgmusic.play()
+		else:
+			bgmusic.stream = load(str("res://assets/Sound/Musics/Mask ", equipedMask + 2,".mp3"))
+			bgmusic.play()
 		isMaskedEquiped = !isMaskedEquiped
 		equipMask.emit(equipedMask)
 		mask_coldown.start()
@@ -64,7 +73,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	if(!is_on_floor() || velocity == Vector3.ZERO):
+		steps.playing = false
+	elif is_on_floor() && velocity != Vector3.ZERO && !steps.playing:
+		steps.play()
+	
 	move_and_slide()
 
 #Function to process camera rotation with the mouse

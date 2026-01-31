@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=19 format=3 uid="uid://cpuninrommo1k"]
 
-[ext_resource type="Script" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
+[ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
 [ext_resource type="Texture2D" uid="uid://cj0ho0ovs1i32" path="res://assets/SkyBox/sky_26_2k.png" id="1_kcal8"]
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
@@ -54,7 +54,7 @@ size = Vector2(2, 2)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
-npcCount = 2000
+npcCount = 500
 npcScene = ExtResource("4_ddsy1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

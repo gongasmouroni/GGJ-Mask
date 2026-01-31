@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmoc1781eokla"]
+
+[ext_resource type="PackedScene" uid="uid://dvnlnywcnfjr5" path="res://assets/Temp/wall.gltf" id="1_5mfuj"]
+[ext_resource type="Script" uid="uid://bsvdbmdyiyao4" path="res://scenes/tests/wall.gd" id="2_ylicp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylicp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylicp"]
+albedo_color = Color(0.75686276, 0.14901961, 0.14509805, 0.6392157)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1v5l1"]
+material = SubResource("StandardMaterial3D_ylicp")
+
+[sub_resource type="Curve" id="Curve_labfk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9825582, 0.15730345), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="wall" instance=ExtResource("1_5mfuj")]
+script = ExtResource("2_ylicp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_ylicp")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4507935, 0)
+amount = 6
+explosiveness = 0.4
+mesh = SubResource("SphereMesh_1v5l1")
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 5.0
+linear_accel_min = 0.1
+linear_accel_max = 2.0
+damping_max = 2.0
+angle_min = -335.0
+angle_max = 437.5
+scale_amount_min = 0.01
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_labfk")
+color = Color(1, 0, 0, 0.4745098)

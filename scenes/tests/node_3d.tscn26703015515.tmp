@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfynbf8lc8g5u"]
+
+[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/Player.tscn" id="1_ol1t5"]
+[ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="2_vbjyj"]
+[ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="3_dfpd7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ol1t5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vbjyj"]
+sky_material = SubResource("ProceduralSkyMaterial_ol1t5")
+
+[sub_resource type="Environment" id="Environment_dfpd7"]
+background_mode = 2
+sky = SubResource("Sky_vbjyj")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vbjyj"]
+vertices = PackedVector3Array(-47, 0.75, -47, -47, 0.75, 47, 47, 0.75, 47, 47, 0.75, -47)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbjyj"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dfpd7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("2_vbjyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 3.1000001, 34)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_vbjyj")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+use_collision = true
+size = Vector3(150, 0.5, 150)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500001, 1.91, -3.1716468)
+size = Vector3(1.7, 3.3, 1)
+material = SubResource("StandardMaterial3D_vbjyj")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500001, 1.91, 2.3283532)
+size = Vector3(1.7, 3.3, 1)
+material = SubResource("StandardMaterial3D_vbjyj")
+
+[node name="Enemy2" parent="." instance=ExtResource("2_vbjyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 3.5000005, -0.90000004)
+
+[node name="Player" parent="." instance=ExtResource("1_ol1t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.3000001, 0)
+
+[node name="Wall" parent="." instance=ExtResource("3_dfpd7")]
+transform = Transform3D(0.5, 0, 0, 0, 6.1490006, 0, 0, 0, 4.5, 5.8, 0.5, -0.4)

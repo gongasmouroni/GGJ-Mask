@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ijapl4fq23s"]
+
+[ext_resource type="Script" uid="uid://cevc05dna1kh7" path="res://scenes/UI/gui.gd" id="1_nq88q"]
+[ext_resource type="Texture2D" uid="uid://bqaqowhghu5cg" path="res://assets/Masks/Red_Carnival_Mask_PNG_Clip_Art_Image.png" id="1_tvu7q"]
+
+[sub_resource type="Animation" id="Animation_nq88q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2617994]
+}
+
+[sub_resource type="Animation" id="Animation_tvu7q"]
+resource_name = "change_mask"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3333333, 0.8666667, 1.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.2617994, -0.7853982, -0.7853982, 0.2617994]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nq88q"]
+_data = {
+&"RESET": SubResource("Animation_nq88q"),
+&"change_mask": SubResource("Animation_tvu7q")
+}
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_nq88q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -801.36865
+offset_top = -398.95416
+offset_right = -20.074707
+offset_bottom = 121.90857
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.2617994
+pivot_offset = Vector2(781.29395, 520.8627)
+texture = ExtResource("1_tvu7q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nq88q")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]

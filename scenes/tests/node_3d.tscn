@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfynbf8lc8g5u"]
+
+[ext_resource type="PackedScene" uid="uid://cujvihv0p37e4" path="res://assets/Temp/City/Large Building-1bt4yYKmuK.glb" id="1_dfpd7"]
+[ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/Player.tscn" id="1_ol1t5"]
+[ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="3_dfpd7"]
+[ext_resource type="PackedScene" uid="uid://bbm0kmtdiuluj" path="res://assets/Temp/City/Large Building-3IhrYZp6tP.glb" id="3_xfsbo"]
+[ext_resource type="PackedScene" uid="uid://cup2jyg3dqlw3" path="res://assets/Temp/City/Large Building-JgGLJH2iXj.glb" id="4_a3dwm"]
+[ext_resource type="PackedScene" uid="uid://cauew2lm80qdk" path="res://assets/Temp/City/Large Building-ppwtREejXg.glb" id="5_lust7"]
+[ext_resource type="PackedScene" uid="uid://cfxe4vc6u3ke1" path="res://assets/Temp/City/Skyscraper.glb" id="7_8x5y1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ol1t5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vbjyj"]
+sky_material = SubResource("ProceduralSkyMaterial_ol1t5")
+
+[sub_resource type="Environment" id="Environment_dfpd7"]
+background_mode = 1
+background_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+sky = SubResource("Sky_vbjyj")
+ambient_light_color = Color(0.5318038, 0.5309917, 0.4065507, 1)
+tonemap_mode = 4
+glow_normalized = true
+fog_mode = 1
+fog_light_color = Color(0.35351756, 0.38436663, 0.43236262, 1)
+fog_density = 1.0
+fog_depth_curve = 0.45062527
+fog_depth_end = 1000.0
+volumetric_fog_detail_spread = 4.438277
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dfpd7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8137975, 0.577909, 0.061275095, -0.5065154, 0.6536411, 0.56231254, 0.2849138, -0.48864526, 0.82465124, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="Player" parent="." instance=ExtResource("1_ol1t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Large Building-1bt4yYKmuK" parent="." instance=ExtResource("1_dfpd7")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.5, -12.6)
+
+[node name="Large Building-3IhrYZp6tP" parent="." instance=ExtResource("3_xfsbo")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 18.3, 0.5, -12.599999)
+
+[node name="Large Building-JgGLJH2iXj" parent="." instance=ExtResource("4_a3dwm")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -17.29, 0, -13.400001)
+
+[node name="Large Building-ppwtREejXg" parent="." instance=ExtResource("5_lust7")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -46.2, 0, -9.400001)
+
+[node name="wall" parent="." instance=ExtResource("3_dfpd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3, 0.5, -12.799999)
+staticWall = false
+
+[node name="wall2" parent="." instance=ExtResource("3_dfpd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3, 0.5, -12.799999)
+staticWall = false
+
+[node name="wall3" parent="." instance=ExtResource("3_dfpd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3, 0.5, -12.799999)
+staticWall = false
+
+[node name="Skyscraper" parent="." instance=ExtResource("7_8x5y1")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 51.3, 0, -9.400001)

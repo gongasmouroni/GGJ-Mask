@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://djt8uw3cn8skh"]
+[gd_scene load_steps=0 format=3 uid="uid://djt8uw3cn8skh"]
 
 [node name="GlitchEffect" type="Control"]
 layout_mode = 3

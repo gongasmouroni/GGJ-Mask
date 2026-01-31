@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5svaflsvlq68"]
+[gd_scene load_steps=6 format=3 uid="uid://b5svaflsvlq68"]
 
 [ext_resource type="Script" uid="uid://bcbhl7yrvttl0" path="res://scripts/Player/player.gd" id="1_h00vy"]
+[ext_resource type="PackedScene" uid="uid://c5qyqgfsma8k6" path="res://scenes/Player/InteractRay.tscn" id="2_gqjuk"]
 [ext_resource type="PackedScene" uid="uid://b8ijapl4fq23s" path="res://scenes/UI/GUI.tscn" id="2_ky53y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uj5gi"]
@@ -19,6 +20,8 @@ shape = SubResource("CapsuleShape3D_uj5gi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="InteractRay" parent="Head" instance=ExtResource("2_gqjuk")]
 
 [node name="Gui" parent="." instance=ExtResource("2_ky53y")]
 

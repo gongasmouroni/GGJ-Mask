@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-@export var playerPath : NodePath
-
 @onready var navigation_region_3d: NavigationRegion3D = $"../NavigationRegion3D"
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D
 
@@ -11,11 +9,7 @@ var speed = 1.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if (playerPath):
-		player = get_node(playerPath)
-	if (player == null):
-		currentDestiny = NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false)
-		navAgent.set_target_position(currentDestiny)
+	player = get_parent().get_node("Player")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -5,16 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dt71dk8vteo54" path="res://scenes/NPC/NPC.tscn" id="2_mpkxw"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
-[ext_resource type="Texture2D" uid="uid://d3l3r0c1d68hs" path="res://assets/Masks/mask_fear.png" id="6_cldoq"]
-[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
-[ext_resource type="Texture2D" uid="uid://cr6igh1d5owsv" path="res://assets/Masks/Mask-1-alone.png" id="8_gwfe6"]
+[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
 [ext_resource type="PackedScene" uid="uid://daxaryjsde3e3" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
-[ext_resource type="Texture2D" uid="uid://b2pameiu1t231" path="res://assets/Masks/mask_twoface.png" id="13_d38gq"]
+[ext_resource type="Texture2D" uid="uid://h8jky0ahhde8" path="res://assets/Masks/bodyF_fear.png" id="12_grnha"]
+[ext_resource type="Texture2D" uid="uid://gx6by4sli5rn" path="res://assets/Masks/bodyF_twoface.png" id="14_mpkxw"]
+[ext_resource type="Texture2D" uid="uid://ubksnuu00ldr" path="res://assets/Masks/bodyF_cocky.png" id="15_y8rby"]
 
 [sub_resource type="Environment" id="Environment_w34hh"]
 background_mode = 1
@@ -164,10 +164,6 @@ staticWall = true
 transform = Transform3D(-0.9730448, 0, -0.23061587, 0, 1, 0, 0.23061587, 0, -0.9730448, -38.5, 0.5, 50.800003)
 staticWall = true
 
-[node name="PickableMask" parent="HiddenWalls" instance=ExtResource("7_meyl1")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
-texture = ExtResource("8_gwfe6")
-
 [node name="ClosablePuzzle1" type="Node3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="ClosablePuzzle1"]
@@ -210,11 +206,18 @@ transform = Transform3D(-1.3787307, 0, -0.24310744, 0, 1.2999998, 0, 0.24310744,
 
 [node name="PickableMask" parent="Masks" instance=ExtResource("7_meyl1")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 50.100002, 1.2, -53.7)
-texture = ExtResource("6_cldoq")
+texture = ExtResource("12_grnha")
+EnemyScene = ExtResource("4_ddsy1")
 
 [node name="PickableMask2" parent="Masks" instance=ExtResource("7_meyl1")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -81.4, 1.2, -68.8)
-texture = ExtResource("13_d38gq")
+texture = ExtResource("14_mpkxw")
+EnemyScene = ExtResource("4_ddsy1")
+
+[node name="PickableMask3" parent="Masks" instance=ExtResource("7_meyl1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
+texture = ExtResource("15_y8rby")
+EnemyScene = ExtResource("4_ddsy1")
 
 [node name="ClosablePuzzle2" type="Node3D" parent="."]
 

@@ -83,6 +83,7 @@ environment = SubResource("Environment_w34hh")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_kcal8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+SPEED = 20.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_kcal8")
@@ -101,9 +102,8 @@ material = ExtResource("3_cldoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.82201, 0, -72.88044)
 end_position = Vector3(2.1, 0, -8.7)
 
-[node name="Enemy" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("4_ddsy1")]
+[node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("4_ddsy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.267147, 1.9834223, 0)
-player = NodePath("../../Player")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1.6990691e-07, 0.6252426, 0.78043044, 1.1784172e-07, -0.78043044, 0.6252426, 1, 1.982003e-07, 5.892086e-08, 0.88, 90, 0)
@@ -271,6 +271,8 @@ isStatic = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Gate1 Security"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 0, -88.1)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate1 Security/StaticBody3D"]
 transform = Transform3D(0.9848078, 0, -0.17364818, 0, 1, 0, 0.17364818, 0, 0.9848078, -0.46757126, 2.15, -0.99435425)
@@ -309,6 +311,8 @@ isStatic = true
 
 [node name="Area3D" type="StaticBody3D" parent="Gate2 Security"]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 20.311089, 0, -87.74935)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate2 Security/Area3D"]
 transform = Transform3D(0.93969333, 0, -0.3420201, 0, 1, 0, 0.3420201, 0, 0.93969333, -0.0068035126, 1.8, -0.2669525)
@@ -347,12 +351,15 @@ isStatic = true
 
 [node name="Area3D" type="StaticBody3D" parent="Gate3 Security"]
 transform = Transform3D(-0.9932383, 0, 0.116092905, 0, 1, 0, -0.116092905, 0, -0.9932383, 21.367535, 0, -88.92062)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate3 Security/Area3D"]
 transform = Transform3D(0.9847639, 0, -0.17363794, 0, 1, 0, 0.17363794, 0, 0.9847639, -0.35687256, 2, -0.33099365)
 shape = SubResource("BoxShape3D_mpkxw")
 
 [node name="Consistency" type="MeshInstance3D" parent="."]
+visible = false
 sorting_offset = -100.0
 extra_cull_margin = 10000.0
 mesh = SubResource("QuadMesh_cldoq")
@@ -385,3 +392,9 @@ transform = Transform3D(0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, 0.64
 [connection signal="hasBeenPicked" from="Masks/PickableMask3" to="Player" method="_on_pickable_mask_has_been_picked"]
 [connection signal="body_entered" from="ClosablePuzzle2/Area3D" to="ClosablePuzzle2/ClosableWall" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ClosablePuzzle2/Area3D" to="ClosablePuzzle2/ClosableWall" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="EndOfLevel" to="." method="_on_end_of_level_body_entered"]
+[connection signal="body_entered" from="EndOfLevel" to="Player" method="_on_end_of_level_body_entered"]
+[connection signal="body_entered" from="EndOfLevel2" to="." method="_on_end_of_level_body_entered"]
+[connection signal="body_entered" from="EndOfLevel2" to="Player" method="_on_end_of_level_body_entered"]
+[connection signal="body_entered" from="EndOfLevel3" to="." method="_on_end_of_level_body_entered"]
+[connection signal="body_entered" from="EndOfLevel3" to="Player" method="_on_end_of_level_body_entered"]

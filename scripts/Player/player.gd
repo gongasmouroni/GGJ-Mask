@@ -15,9 +15,15 @@ extends CharacterBody3D
 #Other nodes that matter
 @onready var head: Node3D = $Head
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var control: Control = $Control
+
+@onready var gui: Control = $Gui
+
 var equipedMask : int = 0
 var isMaskedEquiped : bool = false
-var unlockedMasks : int = 4
+var unlockedMasks : int = 1
 var finalSpeed : float
 
 signal maskChanged(mask:int)
@@ -103,3 +109,12 @@ func rotate_look(rot_input : Vector2):
 
 func _on_pickable_mask_has_been_picked() -> void:
 	unlockedMasks += 1
+
+
+func _on_end_of_level_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		animation_player.play("finishGame")
+		await animation_player.animation_finished
+		gui.hide()
+		control.show()
+		get_tree().paused = true

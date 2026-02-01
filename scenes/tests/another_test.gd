@@ -27,3 +27,8 @@ func _on_player_equip_mask(mask: int) -> void:
 			i.queue_free()
 			#i.collision_layer << 000000000
 			#i.collision_mask << 00000000
+
+
+func _on_enemy_player_colided() -> void:
+	print("test")
+	get_tree().quit()

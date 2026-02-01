@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnca53k832do3"]
+[gd_scene load_steps=5 format=3 uid="uid://dnca53k832do3"]
 
 [ext_resource type="Script" uid="uid://kovksd3uuf4t" path="res://scenes/Enemy/enemy.gd" id="1_ftuji"]
 [ext_resource type="Texture2D" uid="uid://bwngbelgci4v2" path="res://assets/Masks/bodyF_enemy.png" id="2_ftuji"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftuji"]
-size = Vector3(0.33345032, 1.061731, 0.2)
+size = Vector3(0.24804115, 0.555838, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fccx"]
+size = Vector3(2.281021, 2.015625, 1.9299316)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 3
@@ -17,7 +20,7 @@ gi_mode = 2
 texture = ExtResource("2_ftuji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3.8, 0, 0, 0, 2.7, 0, 0, 0, 1, -0.05772245, 0.03472233, -2.9802322e-08)
+transform = Transform3D(3.8, 0, 0, 0, 2.7, 0, 0, 0, 1, 0.016463686, 0.065279394, -2.9802322e-08)
 shape = SubResource("BoxShape3D_ftuji")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -32,4 +35,11 @@ debug_path_custom_color = Color(0.7897952, 0.43304572, 1, 1)
 wait_time = 0.2
 one_shot = true
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10282135, 0.3232422, -0.028686523)
+shape = SubResource("BoxShape3D_8fccx")
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

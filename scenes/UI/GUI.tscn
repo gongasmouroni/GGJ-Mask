@@ -12,6 +12,21 @@ shader = ExtResource("1_c20p6")
 shader_parameter/speed = 1.0
 shader_parameter/intensity = 0.2
 
+[sub_resource type="Animation" id="Animation_7ynti"]
+resource_name = "Dash_mask_Equip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.89564586, 0.296654, 0.27965343, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_q28fx"]
 resource_name = "Jump_mask_Equip"
 tracks/0/type = "value"
@@ -83,21 +98,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, -1.3089969, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_7ynti"]
-resource_name = "Dash_mask_Equip"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.43333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.89564586, 0.296654, 0.27965343, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nq88q"]

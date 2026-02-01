@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://gx6by4sli5rn"
 path.s3tc="res://.godot/imported/bodyF_twoface.png-b7818eff2ad64d62f8705834e9c09f61.s3tc.ctex"
+path.etc2="res://.godot/imported/bodyF_twoface.png-b7818eff2ad64d62f8705834e9c09f61.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Masks/bodyF_twoface.png"
-dest_files=["res://.godot/imported/bodyF_twoface.png-b7818eff2ad64d62f8705834e9c09f61.s3tc.ctex"]
+dest_files=["res://.godot/imported/bodyF_twoface.png-b7818eff2ad64d62f8705834e9c09f61.s3tc.ctex", "res://.godot/imported/bodyF_twoface.png-b7818eff2ad64d62f8705834e9c09f61.etc2.ctex"]
 
 [params]
 

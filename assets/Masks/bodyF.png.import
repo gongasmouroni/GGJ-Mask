@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpkruswe05ocf"
 path.s3tc="res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.s3tc.ctex"
+path.etc2="res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Masks/bodyF.png"
-dest_files=["res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.s3tc.ctex"]
+dest_files=["res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.s3tc.ctex", "res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.etc2.ctex"]
 
 [params]
 

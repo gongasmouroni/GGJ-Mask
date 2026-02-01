@@ -1,9 +1,9 @@
 shader_type spatial;
 render_mode unshaded, fog_disabled;
 
-uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D depth_texture : hint_depth_texture, filter_linear_mipmap;
-uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, filter_linear_mipmap;
+uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
+uniform sampler2D depth_texture : hint_depth_texture, filter_nearest;
+uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, filter_nearest;
 
 uniform float noise_scale = 4;
 uniform float noise_intensity = 0.01;
@@ -34,7 +34,7 @@ float noise(vec2 uv) {
 
 // intensity at a pixel at given UV
 float intensity(in vec2 uv){
-	vec4 color = textureLod(normal_roughness_texture, uv, 0.0);
+	vec4 color = texture(normal_roughness_texture, uv);
 	return sqrt((color.x*color.x)+(color.y*color.y)+(color.z*color.z));
 }
 
@@ -65,7 +65,7 @@ void vertex() {
 void fragment() {
 
     // Screen space hatching
-	vec3 orig = textureLod(screen_texture, SCREEN_UV, 0.0).xyz;
+	vec3 orig = texture(screen_texture, SCREEN_UV).xyz;
     // Posterize pixel brightness
 	float greyscale = max(orig.r, max(orig.g, orig.b));
     float post = floor(greyscale * post_levels) / post_levels;
@@ -77,7 +77,7 @@ void fragment() {
     float final_hatch = max(horiz_hatch, max(diag_hatch, vert_hatch));
     final_hatch = pow(1.0-final_hatch, 5.0);
 
-	vec3 nor = textureLod(normal_roughness_texture, SCREEN_UV, 0.0).xyz;
+	vec3 nor = texture(normal_roughness_texture, SCREEN_UV).xyz;
     float sky_mask = step(0.1, length(abs(nor - vec3(0.2, 0.2, 0.2))));
 
     final_hatch = mix(1, final_hatch, sky_mask);

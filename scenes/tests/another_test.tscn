@@ -352,7 +352,7 @@ transform = Transform3D(0.9847639, 0, -0.17363794, 0, 1, 0, 0.17363794, 0, 0.984
 shape = SubResource("BoxShape3D_mpkxw")
 
 [node name="Consistency" type="MeshInstance3D" parent="."]
-visible = false
+sorting_offset = -100.0
 extra_cull_margin = 10000.0
 mesh = SubResource("QuadMesh_cldoq")
 

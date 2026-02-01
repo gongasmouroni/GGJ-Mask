@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dt71dk8vteo54" path="res://scenes/NPC/NPC.tscn" id="2_mpkxw"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
-[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
@@ -78,7 +78,7 @@ npcScene = ExtResource("2_mpkxw")
 environment = SubResource("Environment_w34hh")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_kcal8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_kcal8")
@@ -227,10 +227,6 @@ EnemyScene = ExtResource("4_ddsy1")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
 texture = ExtResource("15_y8rby")
 EnemyScene = ExtResource("4_ddsy1")
-
-[node name="PickableMask3" parent="Masks" instance=ExtResource("7_meyl1")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
-texture = ExtResource("8_gwfe6")
 
 [node name="ClosablePuzzle2" type="Node3D" parent="."]
 

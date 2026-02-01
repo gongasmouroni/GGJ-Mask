@@ -17,5 +17,5 @@ func _on_interacted(_body: Variant) -> void:
 	var tmp : Node3D = EnemyScene.instantiate()
 	tmp.player = $"../../Player"
 	get_parent().add_child(tmp)
-	tmp.global_position = self.global_position
+	tmp.global_position = Vector3(0.0, 1.0, 0.0)
 	queue_free()

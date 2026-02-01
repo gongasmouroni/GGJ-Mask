@@ -6,6 +6,8 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	for slot in $Main_Menu_Buttons.get_children():
 		slot.mouse_entered.connect(_on_button_mouse_entered.bind(slot))
 
@@ -38,4 +40,6 @@ func _on_return_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	get_tree().change_scene_to_file("res://scenes/tests/another_test.tscn")

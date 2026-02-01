@@ -31,4 +31,4 @@ func _on_player_equip_mask(mask: int) -> void:
 
 func _on_enemy_player_colided() -> void:
 	print("test")
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/UI/ui.tscn")

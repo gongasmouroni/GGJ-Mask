@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bwngbelgci4v2" path="res://assets/Masks/bodyF_enemy.png" id="2_ftuji"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftuji"]
-size = Vector3(0.24804115, 0.555838, 0.2)
+size = Vector3(0.24804115, 1.0799999, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8fccx"]
-size = Vector3(2.281021, 2.015625, 1.9299316)
+size = Vector3(2.281021, 2.9, 1.9299316)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 3
@@ -15,12 +15,12 @@ collision_mask = 3
 script = ExtResource("1_ftuji")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 gi_mode = 2
 texture = ExtResource("2_ftuji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3.8, 0, 0, 0, 2.7, 0, 0, 0, 1, 0.016463686, 0.065279394, -2.9802322e-08)
+transform = Transform3D(3.8, 0, 0, 0, 2.7, 0, 0, 0, 1, 0.016463686, 0.1136606, -2.9802322e-08)
 shape = SubResource("BoxShape3D_ftuji")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -38,7 +38,7 @@ one_shot = true
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10282135, 0.3232422, -0.028686523)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10282135, 0.10105491, -0.028686523)
 shape = SubResource("BoxShape3D_8fccx")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]

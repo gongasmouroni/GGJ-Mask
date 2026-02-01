@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=29 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://h8jky0ahhde8" path="res://assets/Masks/bodyF_fear.png" id="12_grnha"]
 [ext_resource type="Texture2D" uid="uid://gx6by4sli5rn" path="res://assets/Masks/bodyF_twoface.png" id="14_mpkxw"]
 [ext_resource type="Texture2D" uid="uid://ubksnuu00ldr" path="res://assets/Masks/bodyF_cocky.png" id="15_y8rby"]
-[ext_resource type="Shader" path="res://scenes/tests/post.gdshader" id="17_56l15"]
+[ext_resource type="Shader" uid="uid://bttxa1d7clu03" path="res://scenes/tests/post.gdshader" id="17_56l15"]
+[ext_resource type="PackedScene" uid="uid://rk6j6ykf2akc" path="res://scenes/tests/end_of_level.tscn" id="18_rtw3a"]
 
 [sub_resource type="Environment" id="Environment_w34hh"]
 background_mode = 1
@@ -66,8 +67,8 @@ size = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw3a"]
 shader = ExtResource("17_56l15")
-shader_parameter/grain_amount = 0.1650000078375
-shader_parameter/grain_size = 2.43700011249762
+shader_parameter/grain_amount = 0.0450000021375
+shader_parameter/grain_size = 2.45800011349512
 shader_parameter/brightness = 1.3
 shader_parameter/contrast = 1.3
 shader_parameter/saturation = 0.45
@@ -186,7 +187,7 @@ transform = Transform3D(0.4487992, 0, 0.89363265, 0, 1, 0, -0.89363265, 0, 0.448
 [node name="crates" type="Node3D" parent="."]
 
 [node name="crates_stacked2" parent="crates" instance=ExtResource("10_r1whd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -36.600002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.5, -36.600002)
 
 [node name="crates_stacked9" parent="crates" instance=ExtResource("10_r1whd")]
 transform = Transform3D(-0.20063166, 0, 1.2197155, 0, 1, 0, -1.1378386, 0, -0.21506879, -53.5, 0.5, -18.800003)
@@ -364,6 +365,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="EndOfLevel" parent="." instance=ExtResource("18_rtw3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2.4, -99.799995)
+
+[node name="EndOfLevel2" parent="." instance=ExtResource("18_rtw3a")]
+transform = Transform3D(0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, 0.64278764, 96.90001, 2.4, 32.500008)
+
+[node name="EndOfLevel3" parent="." instance=ExtResource("18_rtw3a")]
+transform = Transform3D(0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, 0.64278764, -26.899992, 2.4, 92.100006)
 
 [connection signal="equipMask" from="Player" to="." method="_on_player_equip_mask"]
 [connection signal="equipMask" from="Player" to="HiddenWalls" method="_on_player_equip_mask"]

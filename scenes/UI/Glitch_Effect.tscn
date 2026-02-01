@@ -1,17 +1,22 @@
-[gd_scene load_steps=0 format=3 uid="uid://djt8uw3cn8skh"]
+[gd_scene format=3 uid="uid://bjp5bfdurc5im"]
 
 [node name="GlitchEffect" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-layout_mode = 0
-offset_left = -298.0
-offset_top = -113.0
-offset_right = 2126.0
-offset_bottom = 1223.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)

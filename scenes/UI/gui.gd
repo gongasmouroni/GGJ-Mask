@@ -6,7 +6,7 @@ extends Control
 @onready var mask: TextureRect = $Control/Mask
 
 var paths = ["res://assets/Masks/mask_husk.png", "res://assets/Masks/mask_fear.png", "res://assets/Masks/mask_twoface.png", "res://assets/Masks/Mask-1-alone.png"]
-var index = 0
+#var index = 0
 
 var isApplied = false
 var canInteract = true
@@ -37,22 +37,22 @@ func _on_player_mask_changed(index: int) -> void:
 			canInteract = true
 
 
-func _on_player_equip_mask(mask: int) -> void:
-	if mask == 0:
+func _on_player_equip_mask(index: int) -> void:
+	if index == 0:
 		if isApplied:
 			canvas_modulate.color = Color.WHITE
 		if !isApplied:
 			animation_player.play("Wall_mask_Equip")
 		glitch_effect.visible = !glitch_effect.visible	 
 		isApplied = !isApplied
-	elif mask == 1:
+	elif index == 1:
 		if isApplied:
 			canvas_modulate.color = Color.WHITE
 		if !isApplied:
 			animation_player.play("Jump_mask_Equip")
 		glitch_effect.visible = !glitch_effect.visible
 		isApplied = !isApplied
-	elif mask == 2:
+	elif index == 2:
 		if isApplied:
 			canvas_modulate.color = Color.WHITE
 		if !isApplied:

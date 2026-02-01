@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=21 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
 [ext_resource type="Texture2D" uid="uid://d3l3r0c1d68hs" path="res://assets/Masks/mask_fear.png" id="6_cldoq"]
-[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
@@ -53,7 +53,10 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldoq"]
-size = Vector3(2.9, 3.9, 2.2)
+size = Vector3(3.1000001, 3.9, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d38gq"]
+size = Vector3(7, 6, 5.2000003)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
@@ -87,10 +90,6 @@ end_position = Vector3(2.1, 0, -8.7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.267147, 1.9834223, 0)
 player = NodePath("../../Player")
 
-[node name="PickableMask" parent="." instance=ExtResource("7_meyl1")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 50.100002, 1.2, -53.7)
-texture = ExtResource("6_cldoq")
-
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0.6252426, 0.78043044, 0, -0.78043044, 0.6252426, 1, 2.7330222e-08, 3.4113697e-08, 0.88, 90, 0)
 shadow_enabled = true
@@ -100,29 +99,12 @@ visible = false
 extra_cull_margin = 10000.0
 mesh = SubResource("QuadMesh_cldoq")
 
-[node name="crates_stacked2" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -36.600002)
-
-[node name="crates_stacked3" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
-
-[node name="crates_stacked7" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(-4.4061082e-08, 0, -1.0080001, 0, 0.78000003, 0, 1.0080001, 0, -4.4061082e-08, 11.700001, 0.5, 44.4)
-
-[node name="crates_stacked4" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
-
-[node name="crates_stacked6" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(1.12, 0, 0, 0, 1.04, 0, 0, 0, 1.12, -11.1, 0.5, 41.100002)
-
-[node name="crates_stacked5" parent="." instance=ExtResource("10_r1whd")]
-transform = Transform3D(-1.3787307, 0, -0.24310744, 0, 1.2999998, 0, 0.24310744, 0, -1.3787307, -10.8, 0.5, 61.100002)
-
 [node name="HiddenWalls" type="Node3D" parent="."]
 script = ExtResource("6_gwfe6")
 
 [node name="wall2" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
 transform = Transform3D(0.80805796, 0, 1.000774, 0, 1, 0, -0.96300596, 0, 0.83974916, 48.04138, 0.5, -5.381756)
+isApplied = true
 
 [node name="wall5" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
 transform = Transform3D(-1.0886935, 0, 0.65320885, 0, 1, 0, -0.6285575, 0, -1.1313909, 98.74138, 0.5, 15.318245)
@@ -168,24 +150,82 @@ staticWall = true
 [node name="wall" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
 transform = Transform3D(0.549509, 0, 0.8354878, 0, 1, 0, -0.8354878, 0, 0.549509, -25.300001, 0.5, -2.5)
 
+[node name="wall14" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
+transform = Transform3D(-0.9730448, 0, -0.23061587, 0, 1, 0, 0.23061587, 0, -0.9730448, -31.000002, 0.5, 49)
+staticWall = true
+
+[node name="wall15" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
+transform = Transform3D(-0.9730448, 0, -0.23061587, 0, 1, 0, 0.23061587, 0, -0.9730448, -34.9, 0.5, 49.9)
+staticWall = true
+
+[node name="wall16" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
+transform = Transform3D(-0.9730448, 0, -0.23061587, 0, 1, 0, 0.23061587, 0, -0.9730448, -38.5, 0.5, 50.800003)
+staticWall = true
+
 [node name="ClosablePuzzle1" type="Node3D" parent="."]
 
 [node name="Area3D" type="Area3D" parent="ClosablePuzzle1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.000002, 2.9, 66)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClosablePuzzle1/Area3D"]
-transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -1.0446148, -0.45000005, -0.65670013)
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -2.5235558, -0.45000005, -1.3951035)
 shape = SubResource("BoxShape3D_cldoq")
 
 [node name="ClosableWall" parent="ClosablePuzzle1" instance=ExtResource("12_cldoq")]
 transform = Transform3D(0.4487992, 0, 0.89363265, 0, 1, 0, -0.89363265, 0, 0.4487992, -25.14687, 0.49987793, 62.99288)
 
-[node name="PickableMask2" parent="." instance=ExtResource("7_meyl1")]
+[node name="crates" type="Node3D" parent="."]
+
+[node name="crates_stacked2" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -36.600002)
+
+[node name="crates_stacked9" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(-0.20063166, 0, 1.2197155, 0, 1, 0, -1.1378386, 0, -0.21506879, -53.5, 0.5, -18.800003)
+
+[node name="crates_stacked8" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 34.000004, 0.5, -63.600006)
+
+[node name="crates_stacked3" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
+
+[node name="crates_stacked7" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(-4.4061082e-08, 0, -1.0080001, 0, 0.78000003, 0, 1.0080001, 0, -4.4061082e-08, 11.700001, 0.5, 44.4)
+
+[node name="crates_stacked4" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
+
+[node name="crates_stacked6" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(1.12, 0, 0, 0, 1.04, 0, 0, 0, 1.12, -11.1, 0.5, 41.100002)
+
+[node name="crates_stacked5" parent="crates" instance=ExtResource("10_r1whd")]
+transform = Transform3D(-1.3787307, 0, -0.24310744, 0, 1.2999998, 0, 0.24310744, 0, -1.3787307, -10.8, 0.5, 61.100002)
+
+[node name="Masks" type="Node3D" parent="."]
+
+[node name="PickableMask" parent="Masks" instance=ExtResource("7_meyl1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 50.100002, 1.2, -53.7)
+texture = ExtResource("6_cldoq")
+
+[node name="PickableMask2" parent="Masks" instance=ExtResource("7_meyl1")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -81.4, 1.2, -68.8)
 texture = ExtResource("13_d38gq")
 
+[node name="ClosablePuzzle2" type="Node3D" parent="."]
+
+[node name="ClosableWall" parent="ClosablePuzzle2" instance=ExtResource("12_cldoq")]
+transform = Transform3D(0.95798945, 0, -0.28680325, 0, 1, 0, 0.28680325, 0, 0.95798945, 9.3, 0.5, -51.7)
+
+[node name="Area3D" type="Area3D" parent="ClosablePuzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, -45.100002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClosablePuzzle2/Area3D"]
+transform = Transform3D(0.9579895, 0, -0.28680322, 0, 1, 0, 0.28680322, 0, 0.9579895, 0.7875657, 3.5, -3.5285873)
+shape = SubResource("BoxShape3D_d38gq")
+
 [connection signal="equipMask" from="Player" to="HiddenWalls" method="_on_player_equip_mask"]
-[connection signal="hasBeenPicked" from="PickableMask" to="Player" method="_on_pickable_mask_has_been_picked"]
 [connection signal="body_entered" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_exited"]
-[connection signal="hasBeenPicked" from="PickableMask2" to="Player" method="_on_pickable_mask_has_been_picked"]
+[connection signal="hasBeenPicked" from="Masks/PickableMask" to="Player" method="_on_pickable_mask_has_been_picked"]
+[connection signal="hasBeenPicked" from="Masks/PickableMask2" to="Player" method="_on_pickable_mask_has_been_picked"]
+[connection signal="body_entered" from="ClosablePuzzle2/Area3D" to="ClosablePuzzle2/ClosableWall" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="ClosablePuzzle2/Area3D" to="ClosablePuzzle2/ClosableWall" method="_on_area_3d_body_exited"]

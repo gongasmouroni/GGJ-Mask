@@ -32,6 +32,7 @@ folder_colors={
 [global_group]
 
 HiddenWall="Group for walls that should disappear when a mask is used"
+Player=""
 
 [input]
 

@@ -1,40 +1,57 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8ijapl4fq23s"]
+[gd_scene load_steps=14 format=3 uid="uid://b8ijapl4fq23s"]
 
 [ext_resource type="Shader" uid="uid://bbwyytyxvinsn" path="res://scenes/UI/GUI.gdshader" id="1_c20p6"]
 [ext_resource type="Script" uid="uid://cevc05dna1kh7" path="res://scenes/UI/gui.gd" id="1_nq88q"]
-[ext_resource type="Texture2D" uid="uid://bqaqowhghu5cg" path="res://assets/Masks/Red_Carnival_Mask_PNG_Clip_Art_Image.png" id="1_tvu7q"]
 [ext_resource type="PackedScene" uid="uid://djt8uw3cn8skh" path="res://scenes/UI/Glitch_Effect.tscn" id="4_6vqsa"]
+[ext_resource type="Texture2D" uid="uid://eckpooeembb5" path="res://assets/Masks/hand.png" id="5_ypnol"]
+[ext_resource type="Texture2D" uid="uid://6dt6w880x28h" path="res://assets/Masks/mask_husk.png" id="6_afmcs"]
+[ext_resource type="Texture2D" uid="uid://bvsv3dpofq748" path="res://assets/Masks/finger.png" id="7_3mu3m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vqsa"]
 shader = ExtResource("1_c20p6")
 shader_parameter/speed = 1.0
 shader_parameter/intensity = 0.2
 
+[sub_resource type="Animation" id="Animation_q28fx"]
+resource_name = "Jump_mask_Equip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9922301, 0.43028337, 0.39095467, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_nq88q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/path = NodePath("CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.2617994]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasModulate:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.46666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_6vqsa"]
@@ -58,29 +75,14 @@ length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/path = NodePath("Control:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3333333, 0.8666667, 1.2333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.65, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.2617994, -0.7853982, -0.7853982, 0.2617994]
-}
-
-[sub_resource type="Animation" id="Animation_q28fx"]
-resource_name = "Jump_mask_Equip"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.43333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.9922301, 0.43028337, 0.39095467, 1)]
+"values": [0.0, -1.3089969, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nq88q"]
@@ -90,8 +92,6 @@ _data = {
 &"Wall_mask_Equip": SubResource("Animation_6vqsa"),
 &"change_mask": SubResource("Animation_tvu7q")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c20p6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ynti"]
 shader = ExtResource("1_c20p6")
@@ -116,25 +116,72 @@ libraries = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_c20p6")
+[node name="GlitchEffect" parent="." instance=ExtResource("4_6vqsa")]
+visible = false
+material = SubResource("ShaderMaterial_7ynti")
+layout_mode = 0
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -801.36865
-offset_top = -398.95416
-offset_right = -20.074707
-offset_bottom = 121.90869
+offset_left = -40.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-rotation = 0.2617994
-pivot_offset = Vector2(781.29395, 520.8627)
-texture = ExtResource("1_tvu7q")
+pivot_offset = Vector2(40, 40)
 
-[node name="GlitchEffect" parent="." instance=ExtResource("4_6vqsa")]
-visible = false
-material = SubResource("ShaderMaterial_7ynti")
-layout_mode = 0
+[node name="Hand" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -641.0
+offset_right = 162.0
+offset_bottom = 93.43091
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.5235988
+pivot_offset = Vector2(435, 731)
+texture = ExtResource("5_ypnol")
+expand_mode = 1
+
+[node name="Mask" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -619.0
+offset_top = -651.0
+offset_right = -193.0
+offset_bottom = -1.3981934
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_afmcs")
+expand_mode = 1
+
+[node name="Finger" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -651.0
+offset_right = 169.0
+offset_bottom = 83.43103
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.5235988
+pivot_offset = Vector2(435, 734.431)
+texture = ExtResource("7_3mu3m")
+expand_mode = 1

@@ -15,5 +15,5 @@ func on_player_equip_mask(mask: int) -> void:
 	if(mask == 0 && !staticWall):	
 		self.visible = isApplied
 		collision_shape_3d.disabled = !isApplied
-		cpu_particles_3d.emitting = !isApplied
+		cpu_particles_3d.emitting = isApplied
 		isApplied = !isApplied

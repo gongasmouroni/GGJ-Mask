@@ -2,10 +2,10 @@ extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
-@onready var texture_rect: TextureRect = $TextureRect
 @onready var glitch_effect: Control = $GlitchEffect
+@onready var mask: TextureRect = $Control/Mask
 
-var paths = ["res://assets/Masks/Red_Carnival_Mask_PNG_Clip_Art_Image.png", "res://assets/Masks/oni.png", "res://assets/Masks/Mask-1.png"]
+var paths = ["res://assets/Masks/mask_husk.png", "res://assets/Masks/mask_fear.png", "res://assets/Masks/mask_twoface.png", "res://assets/Masks/Mask-1-alone.png"]
 var index = 0
 
 var isApplied = false
@@ -27,12 +27,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 			
 
 
-func _on_player_mask_changed(mask: int) -> void:
+func _on_player_mask_changed(index: int) -> void:
 			canInteract = false
 			animation_player.stop()
 			animation_player.play("change_mask")
 			await get_tree().create_timer(0.4, true).timeout
-			texture_rect.texture = load(paths[mask])
+			mask.texture = load(paths[index])
 			await get_tree().create_timer(0.9, true).timeout
 			canInteract = true
 

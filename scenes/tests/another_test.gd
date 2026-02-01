@@ -14,5 +14,6 @@ func _ready() -> void:
 	for i in npcCount:
 		var obj : CharacterBody3D = npcScene.instantiate()
 		obj.position = NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false)
+		obj.position.y += 1.
 		obj.scale = Vector3(0.2, 0.2, 0.2)
 		add_child(obj)

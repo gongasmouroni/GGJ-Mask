@@ -52,3 +52,10 @@ func _on_player_equip_mask(mask: int) -> void:
 			animation_player.play("Jump_mask_Equip")
 		glitch_effect.visible = !glitch_effect.visible
 		isApplied = !isApplied
+	elif mask == 2:
+		if isApplied:
+			canvas_modulate.color = Color.WHITE
+		if !isApplied:
+			animation_player.play("Dash_mask_Equip")
+		glitch_effect.visible = !glitch_effect.visible
+		isApplied = !isApplied

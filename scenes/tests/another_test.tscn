@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=20 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
 [ext_resource type="PackedScene" uid="uid://daxaryjsde3e3" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
+[ext_resource type="Texture2D" uid="uid://b2pameiu1t231" path="res://assets/Masks/mask_twoface.png" id="13_d38gq"]
 
 [sub_resource type="Environment" id="Environment_w34hh"]
 background_mode = 1
@@ -56,7 +57,7 @@ size = Vector3(2.9, 3.9, 2.2)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
-npcCount = 6000
+npcCount = 1000
 npcScene = ExtResource("4_ddsy1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -152,7 +153,12 @@ shape = SubResource("BoxShape3D_cldoq")
 [node name="ClosableWall" parent="ClosablePuzzle1" instance=ExtResource("12_cldoq")]
 transform = Transform3D(0.4487992, 0, 0.89363265, 0, 1, 0, -0.89363265, 0, 0.4487992, -25.14687, 0.49987793, 62.99288)
 
+[node name="PickableMask2" parent="." instance=ExtResource("7_meyl1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -81.4, 1.2, -68.8)
+texture = ExtResource("13_d38gq")
+
 [connection signal="equipMask" from="Player" to="HiddenWalls" method="_on_player_equip_mask"]
 [connection signal="hasBeenPicked" from="PickableMask" to="Player" method="_on_pickable_mask_has_been_picked"]
 [connection signal="body_entered" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_exited"]
+[connection signal="hasBeenPicked" from="PickableMask2" to="Player" method="_on_pickable_mask_has_been_picked"]

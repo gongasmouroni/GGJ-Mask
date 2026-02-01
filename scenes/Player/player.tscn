@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcbhl7yrvttl0" path="res://scripts/Player/player.gd" id="1_h00vy"]
 [ext_resource type="PackedScene" path="res://scenes/Player/InteractRay.tscn" id="2_gqjuk"]
 [ext_resource type="PackedScene" uid="uid://b8ijapl4fq23s" path="res://scenes/UI/GUI.tscn" id="2_ky53y"]
-[ext_resource type="AudioStream" uid="uid://cc6u6ra2y2ps5" path="res://assets/Sound/Musics/Mask 1.mp3" id="4_uiqp4"]
+[ext_resource type="AudioStream" uid="uid://d4m1fq5llcmo7" path="res://assets/Sound/Musics/MAIN MENU.mp3" id="4_hvfru"]
 [ext_resource type="AudioStream" uid="uid://cuk2wixaa2b74" path="res://assets/Sound/Effects/steps.mp3" id="5_hvfru"]
 [ext_resource type="Texture2D" uid="uid://dtbv424uof77j" path="res://assets/NPC/image.png" id="6_hvfru"]
 
@@ -100,7 +100,7 @@ wait_time = 1.4
 one_shot = true
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_uiqp4")
+stream = ExtResource("4_hvfru")
 autoplay = true
 parameters/looping = true
 

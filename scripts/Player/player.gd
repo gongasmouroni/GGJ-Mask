@@ -56,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		mask_coldown.start()
 	if Input.is_action_just_pressed("apply_mask")  && mask_coldown.is_stopped():
 		if(isMaskedEquiped):
-			bgmusic.stream = load("res://assets/Sound/Musics/Mask 1.mp3")
+			bgmusic.stream = load("res://assets/Sound/Musics/MAIN MENU.mp3")
 			bgmusic.play()
 		else:
 			bgmusic.stream = load(str("res://assets/Sound/Musics/Mask ", equipedMask + 2,".mp3"))

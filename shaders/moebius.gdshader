@@ -12,8 +12,7 @@ uniform float saturation = 0.2;
 uniform float noise_scale = 4;
 uniform float noise_intensity = 0.01;
 
-uniform float post_gamma = 1.0;
-uniform float post_levels = 4.0;
+uniform float post_levels = 6.0;
 
 uniform vec2 crosshatch_scale = vec2(1.0);
 
@@ -98,5 +97,4 @@ void fragment() {
     c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
 
 	ALBEDO = min(c, vec3(final_hatch));
-	// ALBEDO = vec3(post);
 }

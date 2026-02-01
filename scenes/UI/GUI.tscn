@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bbwyytyxvinsn" path="res://scenes/UI/GUI.gdshader" id="1_c20p6"]
 [ext_resource type="Script" uid="uid://cevc05dna1kh7" path="res://scenes/UI/gui.gd" id="1_nq88q"]
-[ext_resource type="PackedScene" uid="uid://djt8uw3cn8skh" path="res://scenes/UI/Glitch_Effect.tscn" id="4_6vqsa"]
+[ext_resource type="PackedScene" path="res://scenes/UI/Glitch_Effect.tscn" id="4_6vqsa"]
 [ext_resource type="Texture2D" uid="uid://eckpooeembb5" path="res://assets/Masks/hand.png" id="5_ypnol"]
 [ext_resource type="Texture2D" uid="uid://6dt6w880x28h" path="res://assets/Masks/mask_husk.png" id="6_afmcs"]
 [ext_resource type="Texture2D" uid="uid://bvsv3dpofq748" path="res://assets/Masks/finger.png" id="7_3mu3m"]
@@ -135,7 +135,12 @@ libraries = {
 [node name="GlitchEffect" parent="." instance=ExtResource("4_6vqsa")]
 visible = false
 material = SubResource("ShaderMaterial_7ynti")
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

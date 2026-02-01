@@ -26,7 +26,6 @@ path_postprocessing = 1
 simplify_path = true
 radius = 2.0
 max_speed = 100.0
-debug_enabled = true
 debug_path_custom_color = Color(0.7897952, 0.43304572, 1, 1)
 
 [node name="pathCooldown" type="Timer" parent="."]

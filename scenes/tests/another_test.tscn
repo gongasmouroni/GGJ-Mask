@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=23 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
+[ext_resource type="PackedScene" uid="uid://dt71dk8vteo54" path="res://scenes/NPC/NPC.tscn" id="2_mpkxw"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
 [ext_resource type="Texture2D" uid="uid://d3l3r0c1d68hs" path="res://assets/Masks/mask_fear.png" id="6_cldoq"]
 [ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
@@ -61,8 +62,8 @@ size = Vector3(7, 6, 5.2000003)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
-npcCount = 1000
-npcScene = ExtResource("4_ddsy1")
+npcCount = 2000
+npcScene = ExtResource("2_mpkxw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w34hh")

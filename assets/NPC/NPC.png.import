@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpkruswe05ocf"
-path.s3tc="res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.s3tc.ctex"
+uid="uid://dmuhkhxf4sird"
+path.s3tc="res://.godot/imported/NPC.png-ef2cae8eed6f81723667f5352acf5b4d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Masks/bodyF.png"
-dest_files=["res://.godot/imported/bodyF.png-001b40bc74381b973277d10ca6c94446.s3tc.ctex"]
+source_file="res://assets/NPC/NPC.png"
+dest_files=["res://.godot/imported/NPC.png-ef2cae8eed6f81723667f5352acf5b4d.s3tc.ctex"]
 
 [params]
 

@@ -17,8 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://gx6by4sli5rn" path="res://assets/Masks/bodyF_twoface.png" id="14_mpkxw"]
 [ext_resource type="Texture2D" uid="uid://ubksnuu00ldr" path="res://assets/Masks/bodyF_cocky.png" id="15_y8rby"]
 [ext_resource type="Shader" uid="uid://bttxa1d7clu03" path="res://scenes/tests/post.gdshader" id="17_56l15"]
-[ext_resource type="PackedScene" uid="uid://rk6j6ykf2akc" path="res://scenes/tests/end_of_level.tscn" id="18_rtw3a"]
-[ext_resource type="Shader" path="res://scenes/tests/post.gdshader" id="17_56l15"]
+[ext_resource type="PackedScene" path="res://scenes/tests/end_of_level.tscn" id="18_rtw3a"]
 
 [sub_resource type="Environment" id="Environment_w34hh"]
 background_mode = 1
@@ -360,7 +359,6 @@ transform = Transform3D(0.9847639, 0, -0.17363794, 0, 1, 0, 0.17363794, 0, 0.984
 shape = SubResource("BoxShape3D_mpkxw")
 
 [node name="Consistency" type="MeshInstance3D" parent="."]
-visible = false
 sorting_offset = -100.0
 extra_cull_margin = 10000.0
 mesh = SubResource("QuadMesh_cldoq")

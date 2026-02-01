@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal newMask(mask : int)
+
 #Export vars
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
@@ -20,6 +22,8 @@ extends CharacterBody3D
 @onready var control: Control = $Control
 
 @onready var gui: Control = $Gui
+
+var arr = [$"../NavigationRegion3D/Enemy1", $"../NavigationRegion3D/Enemy2", $"../NavigationRegion3D/Enemy3"]
 
 var equipedMask : int = 0
 var isMaskedEquiped : bool = false
@@ -108,7 +112,9 @@ func rotate_look(rot_input : Vector2):
 
 
 func _on_pickable_mask_has_been_picked() -> void:
+	newMask.emit(unlockedMasks)
 	unlockedMasks += 1
+	
 
 
 func _on_end_of_level_body_entered(body: Node3D) -> void:

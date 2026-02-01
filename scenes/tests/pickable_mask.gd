@@ -14,8 +14,4 @@ func _ready() -> void:
 
 func _on_interacted(_body: Variant) -> void:
 	hasBeenPicked.emit()
-	var tmp : Node3D = EnemyScene.instantiate()
-	tmp.player = $"../../Player"
-	get_parent().add_child(tmp)
-	tmp.global_position = Vector3(0.0, 1.0, 0.0)
 	queue_free()

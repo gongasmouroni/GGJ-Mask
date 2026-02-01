@@ -33,3 +33,8 @@ func _on_player_equip_mask(mask: int) -> void:
 func _on_enemy_player_colided() -> void:
 	print("test")
 	get_tree().change_scene_to_file("res://scenes/UI/ui.tscn")
+
+
+func _on_player_new_mask(mask: int) -> void:
+	get_node(str("Enemy", mask)).show()
+	get_node(str("Enemy", mask)).player = get_node("Player")

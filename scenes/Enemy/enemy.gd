@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D
+@onready var another_test: Node3D = $"."
 
 signal player_colided()
 

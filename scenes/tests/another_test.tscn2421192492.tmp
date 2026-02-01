@@ -102,6 +102,15 @@ material = ExtResource("3_cldoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.82201, 0, -72.88044)
 end_position = Vector3(2.1, 0, -8.7)
 
+[node name="Enemy1" parent="NavigationRegion3D" instance=ExtResource("4_ddsy1")]
+visible = false
+
+[node name="Enemy2" parent="NavigationRegion3D" instance=ExtResource("4_ddsy1")]
+visible = false
+
+[node name="Enemy3" parent="NavigationRegion3D" instance=ExtResource("4_ddsy1")]
+visible = false
+
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1.6990691e-07, 0.6252426, 0.78043044, 1.1784172e-07, -0.78043044, 0.6252426, 1, 1.982003e-07, 5.892086e-08, 0.88, 90, 0)
 shadow_enabled = true
@@ -379,21 +388,8 @@ transform = Transform3D(0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, 0.64
 [node name="EndOfLevel3" parent="." instance=ExtResource("18_rtw3a")]
 transform = Transform3D(0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, 0.64278764, -26.899992, 2.4, 92.100006)
 
-[node name="Enemy1" parent="." instance=ExtResource("4_ddsy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0, 15.3)
-visible = false
-
-[node name="Enemy2" parent="." instance=ExtResource("4_ddsy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 0, 0)
-visible = false
-
-[node name="Enemy3" parent="." instance=ExtResource("4_ddsy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1, 0, 0)
-visible = false
-
 [connection signal="equipMask" from="Player" to="." method="_on_player_equip_mask"]
 [connection signal="equipMask" from="Player" to="HiddenWalls" method="_on_player_equip_mask"]
-[connection signal="newMask" from="Player" to="." method="_on_player_new_mask"]
 [connection signal="body_entered" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_exited"]
 [connection signal="hasBeenPicked" from="Masks/PickableMask" to="Player" method="_on_pickable_mask_has_been_picked"]
@@ -407,6 +403,3 @@ visible = false
 [connection signal="body_entered" from="EndOfLevel2" to="Player" method="_on_end_of_level_body_entered"]
 [connection signal="body_entered" from="EndOfLevel3" to="." method="_on_end_of_level_body_entered"]
 [connection signal="body_entered" from="EndOfLevel3" to="Player" method="_on_end_of_level_body_entered"]
-[connection signal="player_colided" from="Enemy1" to="." method="_on_enemy_player_colided"]
-[connection signal="player_colided" from="Enemy2" to="." method="_on_enemy_player_colided"]
-[connection signal="player_colided" from="Enemy3" to="." method="_on_enemy_player_colided"]

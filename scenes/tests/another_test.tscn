@@ -4,19 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dt71dk8vteo54" path="res://scenes/NPC/NPC.tscn" id="2_mpkxw"]
 [ext_resource type="Material" uid="uid://dh7xib54j11ys" path="res://assets/City/Floor.tres" id="3_cldoq"]
-[ext_resource type="PackedScene" uid="uid://bkixni85t2ou2" path="res://scenes/freefield.tscn" id="3_d38gq"]
+[ext_resource type="PackedScene" path="res://scenes/freefield.tscn" id="3_d38gq"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
-[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
-[ext_resource type="PackedScene" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
+[ext_resource type="PackedScene" uid="uid://daxaryjsde3e3" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
 [ext_resource type="Texture2D" uid="uid://h8jky0ahhde8" path="res://assets/Masks/bodyF_fear.png" id="12_grnha"]
 [ext_resource type="Texture2D" uid="uid://gx6by4sli5rn" path="res://assets/Masks/bodyF_twoface.png" id="14_mpkxw"]
 [ext_resource type="Texture2D" uid="uid://ubksnuu00ldr" path="res://assets/Masks/bodyF_cocky.png" id="15_y8rby"]
-[ext_resource type="Shader" uid="uid://bttxa1d7clu03" path="res://scenes/tests/post.gdshader" id="17_56l15"]
+[ext_resource type="Shader" path="res://scenes/tests/post.gdshader" id="17_56l15"]
 
 [sub_resource type="Environment" id="Environment_w34hh"]
 background_mode = 1
@@ -36,7 +36,7 @@ agent_radius = 1.0
 filter_baking_aabb = AABB(-125, 0, -115, 250, 2, 225)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cldoq"]
-size = Vector3(3.1000001, 3.9, 5.5)
+size = Vector3(3.1000001, 3.9, 2.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d38gq"]
 size = Vector3(7, 6, 2)
@@ -87,6 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 navigation_mesh = SubResource("NavigationMesh_kcal8")
 
 [node name="Freefield" parent="NavigationRegion3D" instance=ExtResource("3_d38gq")]
+transform = Transform3D(0.56, 0, 0, 0, 0.6, 0, 0, 0, 0.56, 1.5, 0, 1.5)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 use_collision = true
@@ -111,7 +112,7 @@ shadow_enabled = true
 script = ExtResource("6_gwfe6")
 
 [node name="wall2" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
-transform = Transform3D(0.80805796, 0, 1.000774, 0, 1, 0, -0.96300596, 0, 0.83974916, 48.04138, 0.5, -5.381756)
+transform = Transform3D(0.80805796, 0, 1.000774, 0, 1, 0, -0.96300596, 0, 0.83974916, 47.741383, 0.5, -5.281756)
 isApplied = true
 
 [node name="wall5" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
@@ -148,11 +149,11 @@ transform = Transform3D(-0.72737366, 0, 0.6862416, 0, 1, 0, -0.6862416, 0, -0.72
 isApplied = true
 
 [node name="wall12" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
-transform = Transform3D(-0.5495089, 0, -0.83548784, 0, 1, 0, 0.83548784, 0, -0.5495089, 67.64138, 0.5, 31.028244)
+transform = Transform3D(-0.5495089, 0, -0.83548784, 0, 1, 0, 0.83548784, 0, -0.5495089, 67.34138, 0.5, 31.128244)
 isApplied = true
 
 [node name="wall13" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
-transform = Transform3D(-1.1127714, 0, 0.76959676, 0, 1.32, 0, -0.73188126, 0, -1.170115, 82.04138, 0.5, 37.628246)
+transform = Transform3D(-1.1127714, 0, 0.76959676, 0, 1.32, 0, -0.73188126, 0, -1.170115, 81.94138, 0.5, 37.928246)
 staticWall = true
 
 [node name="wall" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
@@ -176,7 +177,7 @@ staticWall = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.000002, 2.9, 66)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClosablePuzzle1/Area3D"]
-transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -2.5235558, -0.45000005, -1.3951035)
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -3.9524975, -0.45000005, -2.2201042)
 shape = SubResource("BoxShape3D_cldoq")
 
 [node name="ClosableWall" parent="ClosablePuzzle1" instance=ExtResource("12_cldoq")]
@@ -191,13 +192,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -36.600002)
 transform = Transform3D(-0.20063166, 0, 1.2197155, 0, 1, 0, -1.1378386, 0, -0.21506879, -53.5, 0.5, -18.800003)
 
 [node name="crates_stacked8" parent="crates" instance=ExtResource("10_r1whd")]
-transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 34.000004, 0.5, -63.600006)
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, 33.900005, 0.5, -63.600006)
 
 [node name="crates_stacked3" parent="crates" instance=ExtResource("10_r1whd")]
 transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
 
 [node name="crates_stacked7" parent="crates" instance=ExtResource("10_r1whd")]
-transform = Transform3D(-4.4061082e-08, 0, -1.0080001, 0, 0.78000003, 0, 1.0080001, 0, -4.4061082e-08, 11.700001, 0.5, 44.4)
+transform = Transform3D(-4.4061082e-08, 0, -1.0080001, 0, 0.78000003, 0, 1.0080001, 0, -4.4061082e-08, 11.500001, 0.5, 44.600002)
 
 [node name="crates_stacked4" parent="crates" instance=ExtResource("10_r1whd")]
 transform = Transform3D(1.4, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -11.3, 0.5, 57.600002)
@@ -228,7 +229,7 @@ EnemyScene = ExtResource("4_ddsy1")
 [node name="ClosablePuzzle2" type="Node3D" parent="."]
 
 [node name="ClosableWall" parent="ClosablePuzzle2" instance=ExtResource("12_cldoq")]
-transform = Transform3D(0.95798945, 0, -0.28680325, 0, 1, 0, 0.28680325, 0, 0.95798945, 9.3, 0.5, -51.7)
+transform = Transform3D(0.95798945, 0, -0.28680325, 0, 1, 0, 0.28680325, 0, 0.95798945, 9.2, 0.5, -51.7)
 
 [node name="Area3D" type="Area3D" parent="ClosablePuzzle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, -45.100002)
@@ -351,6 +352,7 @@ transform = Transform3D(0.9847639, 0, -0.17363794, 0, 1, 0, 0.17363794, 0, 0.984
 shape = SubResource("BoxShape3D_mpkxw")
 
 [node name="Consistency" type="MeshInstance3D" parent="."]
+visible = false
 extra_cull_margin = 10000.0
 mesh = SubResource("QuadMesh_cldoq")
 

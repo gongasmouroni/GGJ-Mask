@@ -27,7 +27,10 @@ func _physics_process(delta: float) -> void:
 	var next_path_position: Vector3 = navAgent.get_next_path_position()
 	var direction: Vector3 = global_position.direction_to(next_path_position)
 	velocity = direction * speed
+	
 	move_and_slide()
+	if(player!=null):
+		look_at(player.position)
 	
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	pass

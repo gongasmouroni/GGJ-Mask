@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dv8yossv1o7m2"
+uid="uid://cc6u6ra2y2ps5"
 path="res://.godot/imported/Mask 1.mp3-ba8c16985f052873d1609e95dd42d9c2.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Mask 1.mp3-ba8c16985f052873d1609e95dd42d9c2.m
 [params]
 
 loop=false
-loop_offset=0.0
-bpm=0.0
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4

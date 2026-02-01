@@ -9,11 +9,12 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(0.1, true).timeout
+	await get_tree().create_timer(0.2, true).timeout
 	for i in npcCount:
 		var obj : CharacterBody3D = npcScene.instantiate()
 		obj.position = NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false)
-		obj.position.y += 0.5
+		obj.position.y += 1*0.7
+		obj.scale *= 0.7
 		add_child(obj)
 
 

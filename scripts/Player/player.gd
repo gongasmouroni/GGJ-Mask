@@ -17,7 +17,7 @@ extends CharacterBody3D
 
 var equipedMask : int = 0
 var isMaskedEquiped : bool = false
-var unlockedMasks : int = 1
+var unlockedMasks : int = 4
 var finalSpeed : float
 
 signal maskChanged(mask:int)
@@ -51,6 +51,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			bgmusic.stream = load(str("res://assets/Sound/Musics/Mask ", equipedMask + 2,".mp3"))
 			bgmusic.play()
+		if(equipedMask >= 3):
+				set_collision_layer_value(3, isMaskedEquiped)
+				set_collision_mask_value(3, isMaskedEquiped)
 		isMaskedEquiped = !isMaskedEquiped
 		equipMask.emit(equipedMask)
 		mask_coldown.start()

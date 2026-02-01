@@ -42,8 +42,8 @@ shader_parameter/saturation = 0.2
 shader_parameter/noise_scale = 4.0
 shader_parameter/noise_intensity = 0.01
 shader_parameter/post_gamma = 1.0
-shader_parameter/post_levels = 10.0
-shader_parameter/crosshatch_scale = Vector2(3, 3)
+shader_parameter/post_levels = 4.0
+shader_parameter/crosshatch_scale = Vector2(6, 6)
 shader_parameter/crosshatch_texture = ExtResource("11_cldoq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_cldoq"]

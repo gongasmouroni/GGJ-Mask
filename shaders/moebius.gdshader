@@ -77,8 +77,8 @@ void fragment() {
     float post_inv = 1.0 - post;
     vec3 crosshatch = texture(crosshatch_texture, SCREEN_UV*crosshatch_scale).rgb;
     float diag_hatch = step(1.0, post_inv) * crosshatch.r;
-    float vert_hatch = step(0.9, post_inv) * crosshatch.b;
-    float horiz_hatch = step(0.8, post_inv) * crosshatch.g;
+    float vert_hatch = step(0.75, post_inv) * crosshatch.b;
+    float horiz_hatch = step(0.5, post_inv) * crosshatch.g;
     float final_hatch = max(horiz_hatch, max(diag_hatch, vert_hatch));
     final_hatch = pow(1.0-final_hatch, 5.0);
 
@@ -98,5 +98,5 @@ void fragment() {
     c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
 
 	ALBEDO = min(c, vec3(final_hatch));
-	//ALBEDO = vec3(post);
+	// ALBEDO = vec3(post);
 }

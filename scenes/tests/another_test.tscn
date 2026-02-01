@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=22 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
 [ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="Texture2D" uid="uid://cr6igh1d5owsv" path="res://assets/Masks/Mask-1-alone.png" id="8_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
@@ -161,6 +162,10 @@ staticWall = true
 [node name="wall16" parent="HiddenWalls" instance=ExtResource("6_hvsmp")]
 transform = Transform3D(-0.9730448, 0, -0.23061587, 0, 1, 0, 0.23061587, 0, -0.9730448, -38.5, 0.5, 50.800003)
 staticWall = true
+
+[node name="PickableMask" parent="HiddenWalls" instance=ExtResource("7_meyl1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
+texture = ExtResource("8_gwfe6")
 
 [node name="ClosablePuzzle1" type="Node3D" parent="."]
 

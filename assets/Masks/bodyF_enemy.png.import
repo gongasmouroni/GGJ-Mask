@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwngbelgci4v2"
 path.s3tc="res://.godot/imported/bodyF_enemy.png-6edc60f0ff8fe6308e55bef92c53b641.s3tc.ctex"
-path.etc2="res://.godot/imported/bodyF_enemy.png-6edc60f0ff8fe6308e55bef92c53b641.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Masks/bodyF_enemy.png"
-dest_files=["res://.godot/imported/bodyF_enemy.png-6edc60f0ff8fe6308e55bef92c53b641.s3tc.ctex", "res://.godot/imported/bodyF_enemy.png-6edc60f0ff8fe6308e55bef92c53b641.etc2.ctex"]
+dest_files=["res://.godot/imported/bodyF_enemy.png-6edc60f0ff8fe6308e55bef92c53b641.s3tc.ctex"]
 
 [params]
 

@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://b5svaflsvlq68" path="res://scenes/Player/player.tscn" id="2_kcal8"]
 [ext_resource type="PackedScene" uid="uid://dt71dk8vteo54" path="res://scenes/NPC/NPC.tscn" id="2_mpkxw"]
 [ext_resource type="Material" uid="uid://dh7xib54j11ys" path="res://assets/City/Floor.tres" id="3_cldoq"]
-[ext_resource type="PackedScene" uid="uid://bkixni85t2ou2" path="res://scenes/freefield.tscn" id="3_d38gq"]
+[ext_resource type="PackedScene" path="res://scenes/freefield.tscn" id="3_d38gq"]
 [ext_resource type="PackedScene" uid="uid://dnca53k832do3" path="res://scenes/Enemy/Enemy.tscn" id="4_ddsy1"]
-[ext_resource type="Script" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
+[ext_resource type="Script" uid="uid://bvadf0xwulye0" path="res://scenes/tests/hidden_walls.gd" id="6_gwfe6"]
 [ext_resource type="PackedScene" uid="uid://dmoc1781eokla" path="res://scenes/tests/wall.tscn" id="6_hvsmp"]
-[ext_resource type="PackedScene" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
+[ext_resource type="PackedScene" uid="uid://cecd824dilyue" path="res://scenes/tests/PickableMask.tscn" id="7_meyl1"]
 [ext_resource type="PackedScene" uid="uid://cxlm5xohdc2vk" path="res://assets/Temp/crates_stacked.gltf" id="10_r1whd"]
 [ext_resource type="Texture2D" uid="uid://bki6o6kmtxmsn" path="res://shaders/IMG_3105 2.jpg" id="11_cldoq"]
 [ext_resource type="Shader" uid="uid://hg755e3bh1m0" path="res://shaders/moebius.gdshader" id="11_w34hh"]
-[ext_resource type="PackedScene" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
+[ext_resource type="PackedScene" uid="uid://daxaryjsde3e3" path="res://scenes/tests/closable_wall.tscn" id="12_cldoq"]
 [ext_resource type="Texture2D" uid="uid://h8jky0ahhde8" path="res://assets/Masks/bodyF_fear.png" id="12_grnha"]
 [ext_resource type="Texture2D" uid="uid://gx6by4sli5rn" path="res://assets/Masks/bodyF_twoface.png" id="14_mpkxw"]
 [ext_resource type="Texture2D" uid="uid://ubksnuu00ldr" path="res://assets/Masks/bodyF_cocky.png" id="15_y8rby"]
@@ -83,7 +83,7 @@ environment = SubResource("Environment_w34hh")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_kcal8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
-SPEED = 20.0
+SPEED = 7.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_kcal8")

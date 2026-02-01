@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmycg3mvu41bn"]
+[gd_scene load_steps=26 format=3 uid="uid://bmycg3mvu41bn"]
 
 [ext_resource type="Script" uid="uid://j85bch5njv75" path="res://scenes/tests/another_test.gd" id="1_6noqk"]
 [ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_fbkil"]
@@ -58,7 +58,16 @@ size = Vector2(2, 2)
 size = Vector3(3.1000001, 3.9, 5.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d38gq"]
-size = Vector3(7, 6, 5.2000003)
+size = Vector3(7, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8rby"]
+size = Vector3(9.8, 5.3, 4.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56l15"]
+size = Vector3(9.1, 4.6, 4.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpkxw"]
+size = Vector3(11.3, 5, 6.1)
 
 [node name="another_test" type="Node3D"]
 script = ExtResource("1_6noqk")
@@ -219,6 +228,10 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
 texture = ExtResource("15_y8rby")
 EnemyScene = ExtResource("4_ddsy1")
 
+[node name="PickableMask3" parent="Masks" instance=ExtResource("7_meyl1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46, 1.2, 60.8)
+texture = ExtResource("8_gwfe6")
+
 [node name="ClosablePuzzle2" type="Node3D" parent="."]
 
 [node name="ClosableWall" parent="ClosablePuzzle2" instance=ExtResource("12_cldoq")]
@@ -228,9 +241,123 @@ transform = Transform3D(0.95798945, 0, -0.28680325, 0, 1, 0, 0.28680325, 0, 0.95
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, -45.100002)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClosablePuzzle2/Area3D"]
-transform = Transform3D(0.9579895, 0, -0.28680322, 0, 1, 0, 0.28680322, 0, 0.9579895, 0.7875657, 3.5, -3.5285873)
+transform = Transform3D(0.9579895, 0, -0.28680322, 0, 1, 0, 0.28680322, 0, 0.9579895, 1.2464509, 3.5, -5.061371)
 shape = SubResource("BoxShape3D_d38gq")
 
+[node name="Gate1 Security" type="Node3D" parent="."]
+
+[node name="Npc" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 16.9, 2.1000001, -90.8)
+isStatic = true
+
+[node name="Npc2" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 17.3, 2.1000001, -88.5)
+isStatic = true
+
+[node name="Npc3" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320509, 0, -0.10000001, 0, 0.2, 0, 0.10000001, 0, 0.17320509, 18.4, 2.1000001, -86.9)
+isStatic = true
+
+[node name="Npc4" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.19696155, 0, -0.03472965, 0, 0.2, 0, 0.03472965, 0, 0.19696155, 20.4, 2.1000001, -86.200005)
+isStatic = true
+
+[node name="Npc5" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 22.5, 2.1000001, -86.600006)
+isStatic = true
+
+[node name="Npc6" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 24.6, 2.1000001, -87.8)
+isStatic = true
+
+[node name="Npc7" parent="Gate1 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.068404034, 0, 0.18793848, 0, 0.19999997, 0, -0.18793848, 0, 0.068404034, 25.800001, 2.1000001, -89.3)
+isStatic = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gate1 Security"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 0, -88.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate1 Security/StaticBody3D"]
+transform = Transform3D(0.9848078, 0, -0.17364818, 0, 1, 0, 0.17364818, 0, 0.9848078, -0.46757126, 2.15, -0.99435425)
+shape = SubResource("BoxShape3D_y8rby")
+
+[node name="Gate2 Security" type="Node3D" parent="."]
+transform = Transform3D(-0.23061593, 0, -0.973045, 0, 1, 0, 0.973045, 0, -0.23061593, 6.9000006, 0, -13.900001)
+
+[node name="Npc" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 16.9, 2.1000001, -90.8)
+isStatic = true
+
+[node name="Npc2" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 17.3, 2.1000001, -88.5)
+isStatic = true
+
+[node name="Npc3" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320509, 0, -0.10000001, 0, 0.2, 0, 0.10000001, 0, 0.17320509, 18.4, 2.1000001, -86.9)
+isStatic = true
+
+[node name="Npc4" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.19696155, 0, -0.03472965, 0, 0.2, 0, 0.03472965, 0, 0.19696155, 20.4, 2.1000001, -86.200005)
+isStatic = true
+
+[node name="Npc5" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 22.5, 2.1000001, -86.600006)
+isStatic = true
+
+[node name="Npc6" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 24.6, 2.1000001, -87.8)
+isStatic = true
+
+[node name="Npc7" parent="Gate2 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.068404034, 0, 0.18793848, 0, 0.19999997, 0, -0.18793848, 0, 0.068404034, 25.800001, 2.1000001, -89.3)
+isStatic = true
+
+[node name="Area3D" type="StaticBody3D" parent="Gate2 Security"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 20.311089, 0, -87.74935)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate2 Security/Area3D"]
+transform = Transform3D(0.93969333, 0, -0.3420201, 0, 1, 0, 0.3420201, 0, 0.93969333, -0.0068035126, 1.8, -0.2669525)
+shape = SubResource("BoxShape3D_56l15")
+
+[node name="Gate3 Security" type="Node3D" parent="."]
+transform = Transform3D(-0.9932384, 0, -0.11609292, 0, 1, 0, 0.11609292, 0, -0.9932384, -14.2, 0, -10.3)
+
+[node name="Npc" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 16.9, 2.1000001, -90.8)
+isStatic = true
+
+[node name="Npc2" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.034729637, 0, -0.19696157, 0, 0.2, 0, 0.19696157, 0, 0.034729637, 17.3, 2.1000001, -88.5)
+isStatic = true
+
+[node name="Npc3" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320509, 0, -0.10000001, 0, 0.2, 0, 0.10000001, 0, 0.17320509, 18.4, 2.1000001, -86.9)
+isStatic = true
+
+[node name="Npc4" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.19696155, 0, -0.03472965, 0, 0.2, 0, 0.03472965, 0, 0.19696155, 20.4, 2.1000001, -86.200005)
+isStatic = true
+
+[node name="Npc5" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 22.5, 2.1000001, -86.600006)
+isStatic = true
+
+[node name="Npc6" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.17320508, 0, 0.09999997, 0, 0.2, 0, -0.09999997, 0, 0.17320508, 24.6, 2.1000001, -87.8)
+isStatic = true
+
+[node name="Npc7" parent="Gate3 Security" instance=ExtResource("2_mpkxw")]
+transform = Transform3D(0.068404034, 0, 0.18793848, 0, 0.19999997, 0, -0.18793848, 0, 0.068404034, 25.800001, 2.1000001, -89.3)
+isStatic = true
+
+[node name="Area3D" type="StaticBody3D" parent="Gate3 Security"]
+transform = Transform3D(-0.9932383, 0, 0.116092905, 0, 1, 0, -0.116092905, 0, -0.9932383, 21.367535, 0, -88.92062)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate3 Security/Area3D"]
+transform = Transform3D(0.9847639, 0, -0.17363794, 0, 1, 0, 0.17363794, 0, 0.9847639, -0.35687256, 2, -0.33099365)
+shape = SubResource("BoxShape3D_mpkxw")
+
+[connection signal="equipMask" from="Player" to="." method="_on_player_equip_mask"]
 [connection signal="equipMask" from="Player" to="HiddenWalls" method="_on_player_equip_mask"]
 [connection signal="body_entered" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="ClosablePuzzle1/Area3D" to="ClosablePuzzle1/ClosableWall" method="_on_area_3d_body_exited"]

@@ -12,6 +12,13 @@ uniform float saturation = 0.2;
 uniform float noise_scale = 4;
 uniform float noise_intensity = 0.01;
 
+uniform float post_gamma = 1.0;
+uniform float post_levels = 4.0;
+
+uniform vec2 crosshatch_scale = vec2(1.0);
+
+uniform sampler2D crosshatch_texture : repeat_enable, filter_linear_mipmap;
+
 vec2 random(vec2 uv){
     uv = vec2( dot(uv, vec2(127.1,311.7) ),
                dot(uv, vec2(269.5,183.3) ) );
@@ -32,7 +39,7 @@ float noise(vec2 uv) {
 
 // intensity at a pixel at given UV
 float intensity(in vec2 uv){
-	vec4 color = textureLod(screen_texture, uv, 0.0);
+	vec4 color = textureLod(normal_roughness_texture, uv, 0.0);
 	return sqrt((color.x*color.x)+(color.y*color.y)+(color.z*color.z));
 }
 
@@ -61,16 +68,34 @@ void vertex() {
 }
 
 void fragment() {
+
+    // Screen space hatching
 	vec3 orig = textureLod(screen_texture, SCREEN_UV, 0.0).xyz;
-	vec2 step_xy = 2.0/VIEWPORT_SIZE.xy;
+    // Posterize pixel brightness
+	float greyscale = max(orig.r, max(orig.g, orig.b));
+    float post = floor(greyscale * post_levels) / post_levels;
+    float post_inv = 1.0 - post;
+    vec3 crosshatch = texture(crosshatch_texture, SCREEN_UV*crosshatch_scale).rgb;
+    float diag_hatch = step(1.0, post_inv) * crosshatch.r;
+    float vert_hatch = step(0.75, post_inv) * crosshatch.b;
+    float horiz_hatch = step(0.5, post_inv) * crosshatch.g;
+    float final_hatch = max(horiz_hatch, max(diag_hatch, vert_hatch));
+    final_hatch = pow(1.0-final_hatch, 5.0);
+
+	vec3 nor = textureLod(normal_roughness_texture, SCREEN_UV, 0.0).xyz;
+    float sky_mask = step(0.1, length(abs(nor - vec3(0.2, 0.2, 0.2))));
+
+    final_hatch = mix(1, final_hatch, sky_mask);
+
+    // Sobel
+	vec2 step_xy = 1.0/VIEWPORT_SIZE.xy;
 	vec2 screen_uv = SCREEN_UV + noise(SCREEN_UV*noise_scale)*noise_intensity;
 	vec3 c = sobel(step_xy.x, step_xy.y, screen_uv);
-	
-	c = (1.0-c);
+	c = pow(1.0-c, vec3(10));
 	
 	c.rgb = mix(vec3(0.0), c.rgb, brightness);
     c.rgb = mix(vec3(0.5), c.rgb, contrast);
     c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
 
-	ALBEDO = c;
+	ALBEDO = min(c, vec3(final_hatch));
 }

@@ -1,35 +1,33 @@
 extends CharacterBody3D
 
-@onready var navigation_region_3d: NavigationRegion3D = $"../NavigationRegion3D"
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D
 
-var player = null
+@export var player : CharacterBody3D = null
 var currentDestiny : Vector3
-var speed = 1.8
-
+var speed = 4
+var movement_delta : float
+@onready var path_cooldown: Timer = $pathCooldown
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player = get_parent().get_node("Player")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if (player != null):
-		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+	pass
 
-func _physics_process(_delta: float) -> void:
-	if (player == null):
-		velocity = Vector3.ZERO
-		if (navAgent.is_target_reached() || !navAgent.is_target_reachable() || navAgent.target_position == Vector3.ZERO):
-			#print("RAND:", NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false))
-			currentDestiny = NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false)
-			navAgent.set_target_position(currentDestiny)
-		var next_location = navAgent.get_next_path_position()
-		velocity = (next_location - global_transform.origin).normalized() * speed
-		#print("RAND:", NavigationServer3D.region_get_random_point(navigation_region_3d.get_rid(), 1, false))
-		#print("Next Location: ", next_location)
-		#print("navAgent next path: ", navAgent.get_next_path_position())
-		#print("Self postion: ", self.position)
-		#print("curr Des: ", currentDestiny)
-		look_at(Vector3(next_location.x, global_position.y, next_location.z), Vector3.UP)
-		move_and_slide()
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	if player and path_cooldown.is_stopped():
+		navAgent.target_position = player.global_position
+		path_cooldown.start()
+	
+	var next_path_position: Vector3 = navAgent.get_next_path_position()
+	var direction: Vector3 = global_position.direction_to(next_path_position)
+	velocity = direction * speed
+	move_and_slide()
+	
+func _on_velocity_computed(safe_velocity: Vector3) -> void:
+	pass

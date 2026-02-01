@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dh7xib54j11ys"]
+
+[ext_resource type="Texture2D" uid="uid://sdl20l7boqqo" path="res://assets/City/wall2.png" id="1_vi53r"]
+
+[resource]
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("1_vi53r")
+roughness = 0.7
+uv1_scale = Vector3(2.9, 2.9, 2.9)

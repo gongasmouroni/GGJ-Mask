@@ -5,10 +5,6 @@ uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D depth_texture : hint_depth_texture, filter_linear_mipmap;
 uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, filter_linear_mipmap;
 
-uniform float brightness = 0.8;
-uniform float contrast = 1.0;
-uniform float saturation = 0.2;
-
 uniform float noise_scale = 4;
 uniform float noise_intensity = 0.01;
 
@@ -92,9 +88,6 @@ void fragment() {
 	vec3 c = sobel(step_xy.x, step_xy.y, screen_uv);
 	c = pow(1.0-c, vec3(10));
 	
-	c.rgb = mix(vec3(0.0), c.rgb, brightness);
-    c.rgb = mix(vec3(0.5), c.rgb, contrast);
-    c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
-
-	ALBEDO = min(c, vec3(final_hatch));
+	ALBEDO = min(c, vec3(final_hatch))+orig*0.4;
+    ALBEDO = clamp(ALBEDO, 0.0, 1.0);
 }

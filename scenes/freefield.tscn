@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkixni85t2ou2"]
+
+[ext_resource type="PackedScene" uid="uid://cjeeengftfkhp" path="res://assets/City/Freefield.glb" id="1_47wux"]
+[ext_resource type="Material" uid="uid://h0xnrcfkif2d" path="res://scenes/freefield.tres" id="2_hxgdf"]
+
+[node name="Freefield" instance=ExtResource("1_47wux")]
+transform = Transform3D(0.56, 0, 0, 0, 0.6, 0, 0, 0, 0.56, 0, 0, 0)
+
+[node name="freefield-2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.9999998, 0, 1, 0, -3.0068789, -2.011636, -2.4628835)
+surface_material_override/0 = ExtResource("2_hxgdf")
+
+[node name="CollisionShape3D" parent="freefield-2/StaticBody3D" index="0"]
+visible = false
+debug_color = Color(0.44615275, 0.47642696, 0.93501765, 0.41960785)
